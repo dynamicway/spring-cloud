@@ -1,33 +1,44 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.2'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+
+    id 'org.springframework.boot' version '2.6.2' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
     id 'java'
+
 }
 
-group = 'me.study'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+allprojects {
 
-repositories {
-    mavenCentral()
-}
-
-ext {
-    set('springCloudVersion', "2021.0.0")
-}
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    repositories {
+        mavenCentral()
     }
+
 }
 
-test {
-    useJUnitPlatform()
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'me.study'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '17'
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:2021.0.0"
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    bootJar { enabled = false }
+
 }
