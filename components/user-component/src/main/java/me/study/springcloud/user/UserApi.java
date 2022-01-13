@@ -1,14 +1,15 @@
-package me.study.springcloud;
+package me.study.springcloud.user;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user-service")
+@RequiredArgsConstructor
 public class UserApi {
 
+    private final UserService userService;
     @Value("${greeting.message}")
     private String greetingMessage;
 
