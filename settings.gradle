@@ -1,5 +1,10 @@
 rootProject.name = 'springcloud'
 
-include 'discovery-service', 'api-gateway'
-include 'applications:user-app'
-include 'components:user-component'
+include 'discovery-service',
+        'api-gateway'
+
+include 'applications:user-app',
+        'applications:catalog-app'
+
+include 'components:user-component',
+        'components:catalog-component'
