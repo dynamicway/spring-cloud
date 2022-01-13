@@ -18,4 +18,11 @@ public class UserApi {
         return greetingMessage;
     }
 
+    @PostMapping("/users")
+    public void signUp(
+            @RequestBody SignUpRequest signUpRequest
+    ) {
+        userService.signUp(signUpRequest);
+    }
+
 }
