@@ -7,18 +7,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: first-service
-          uri: http://localhost:8001/
+        - id: user-service
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/first-service/**
-        - id: second-service
-          uri: http://localhost:8002/
-          predicates:
-            - Path=/second-service/**
+            - Path=/user-service/**
 
 eureka:
   client:
-    fetch-registry: false
-    register-with-eureka: false
+    fetch-registry: true
+    register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
