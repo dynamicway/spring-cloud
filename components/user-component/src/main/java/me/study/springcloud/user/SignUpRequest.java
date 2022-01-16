@@ -8,13 +8,11 @@ import lombok.NoArgsConstructor;
 public class SignUpRequest {
     private String email;
     private String name;
-    private String password;
 
     public UserEntity getUserEntity() {
         return new UserEntity(
                 email,
-                name,
-                password
+                name
         );
     }
 
