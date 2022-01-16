@@ -18,6 +18,16 @@ spring:
 
   application:
     name: user-service
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 762528943573-psakgl9g8ij4gnqsm08avi9k9gj725h1.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+              - profile
 
 eureka:
   instance:
@@ -30,3 +40,6 @@ eureka:
 
 greeting:
   message: hello user service
+
+jwt:
+  secret: this_is_secret
