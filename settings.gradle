@@ -4,7 +4,9 @@ include 'discovery-service',
         'api-gateway'
 
 include 'applications:user-app',
-        'applications:catalog-app'
+        'applications:catalog-app',
+        'applications:order-app'
 
 include 'components:user-component',
-        'components:catalog-component'
+        'components:catalog-component',
+        'components:order-component'
