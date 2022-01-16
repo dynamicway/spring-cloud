@@ -3,6 +3,8 @@ package me.study.springcloud.order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
@@ -17,6 +19,13 @@ public class OrderApi {
             @RequestBody OrderRequest orderRequest
     ) {
         orderService.order(orderRequest);
+    }
+
+    @GetMapping("/{userId}/orders")
+    public List<GetOrderResponse> getOrder(
+            @PathVariable("userId") long userId
+    ) {
+        return orderService.getOrder(userId);
     }
 
 }
