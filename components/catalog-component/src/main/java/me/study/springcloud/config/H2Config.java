@@ -15,7 +15,7 @@ public class H2Config {
     @Bean
     @ConfigurationProperties("spring.datasource.hikari")
     public DataSource dataSource() throws SQLException {
-        Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "1001").start();
+        Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "1002").start();
         return new HikariDataSource();
     }
 
