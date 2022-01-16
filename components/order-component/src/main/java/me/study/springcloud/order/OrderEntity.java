@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name = "orders")
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +26,14 @@ public class OrderEntity {
     private long userId;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    public OrderEntity(long productId, int qty, int unitPrice, int totalPrice, long userId, LocalDateTime createdAt) {
+        this.productId = productId;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
+        this.totalPrice = totalPrice;
+        this.userId = userId;
+        this.createdAt = createdAt;
+    }
+
 }
