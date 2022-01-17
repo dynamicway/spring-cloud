@@ -10,11 +10,28 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
+            - Path=/user-service/welcome
+            - Method=GET
+          filters:
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/login
+          filters:
+            - RewritePath=/user-service/(?<segment>.*), /oauth2/authorization/google
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
             - Path=/user-service/**
+
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates:
             - Path=/catalog-service/**
+
         - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
